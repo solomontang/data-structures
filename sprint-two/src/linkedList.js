@@ -4,8 +4,6 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    //find the thing that references the tail
-      //which is the node that references the node whose .next is null;
     var newNode = Node(value);
     if (list.head === null) {
       list.head = newNode;
@@ -14,10 +12,6 @@ var LinkedList = function() {
       list.tail.next = newNode;
       list.tail = newNode;
     }
-    //find the node whose next is null
-      //set node.next to Node(value);
-
-    //if list.head is null, setHead and tail
     
   };
 
