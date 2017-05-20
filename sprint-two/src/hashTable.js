@@ -4,9 +4,10 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  debugger;
   var index = getIndexBelowMaxForKey(k, this._limit);
   // this._storage.set(index, [k, v]);
-  var bucket = this._storage[index] || [];
+  var bucket = this._storage.get(index) || [];
   var contains = false;
   bucket.forEach( (tuple) => {
     if (tuple[0] === k) {
@@ -17,6 +18,7 @@ HashTable.prototype.insert = function(k, v) {
   if (!contains) {
     bucket.push([k, v]);
   }
+  this._storage.set(index, bucket);
 };
 
 HashTable.prototype.retrieve = function(k) {
