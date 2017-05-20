@@ -4,7 +4,6 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
-  debugger;
   var index = getIndexBelowMaxForKey(k, this._limit);
   // this._storage.set(index, [k, v]);
   var bucket = this._storage.get(index) || [];
@@ -22,8 +21,15 @@ HashTable.prototype.insert = function(k, v) {
 };
 
 HashTable.prototype.retrieve = function(k) {
+  debugger;
   var index = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(index)[1];
+  var value;
+  this._storage.get(index).forEach( (tuple) => {
+    if (tuple[0] === k) {
+      value = tuple[1];
+    }
+  });
+  return value;
 };
 
 HashTable.prototype.remove = function(k) {
